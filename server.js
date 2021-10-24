@@ -4,6 +4,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const session = require("express-session")
 const methodOverride = require('method-override')
+const indexController = require('./controllers/index');
+const usersController = require('./controllers/users');
+
 
 const app = express()
 require('dotenv').config();
@@ -24,6 +27,7 @@ db.on('error', (error) => {
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.json());
+app.use(methodOverride())
 app.use(cors());
 app.use(
     session({
@@ -32,6 +36,9 @@ app.use(
       saveUninitialized: false,
     })
   )
+
+app.use('/', indexController);
+app.use('/', usersController);
 
 app.listen(PORT, () => {
     console.log(`Sweet dreams are made of these:${PORT}`)
