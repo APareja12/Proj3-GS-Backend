@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const skillsController = require('./controllers/skills');
 const cors = require('cors');
+const session = require("express-session")
+const methodOverride = require('method-override')
 
 const app = express()
 require('dotenv').config();
@@ -24,7 +25,14 @@ app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
+app.use(
+    session({
+      secret: process.env.SECRET,
+      resave: false,
+      saveUninitialized: false,
+    })
+  )
 
 app.listen(PORT, () => {
-    console.log(`Express is listening on port:${PORT}`)
+    console.log(`Sweet dreams are made of these:${PORT}`)
 });
