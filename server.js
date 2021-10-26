@@ -6,6 +6,7 @@ const session = require("express-session")
 const methodOverride = require('method-override')
 const indexController = require('./controllers/index');
 const usersController = require('./controllers/users');
+const filmsController = require('./controllers/films')
 
 
 const app = express()
@@ -37,8 +38,17 @@ app.use(
     })
   )
 
-app.use('/', indexController);
-app.use('/', usersController);
+///////////////////////////////
+// ROUTES
+////////////////////////////////
+// create a test route
+// app.get("/", (req, res) => {
+//   res.send("hello world");
+// });
+
+app.use('/index', indexController);
+app.use('/users', usersController);
+app.use('/films', filmsController);
 
 app.listen(PORT, () => {
     console.log(`Sweet dreams are made of these:${PORT}`)
