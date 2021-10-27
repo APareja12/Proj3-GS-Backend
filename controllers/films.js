@@ -14,6 +14,14 @@ router.get("/", async (req, res) => {
     }
   });
 
+  router.get("/seed", (req, res) => {
+    Film.deleteMany({}, (error, allFilms) => {})
+  
+    Film.create(filmSeed, (error, data) => {
+      res.redirect("/")
+    })
+  })
+
   router.delete("/:id", async (req, res) => {
     try {
       res.json(await Film.findByIdAndDelete(req.params.id));
