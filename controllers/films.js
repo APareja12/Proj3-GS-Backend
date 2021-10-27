@@ -1,30 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const Film = require('../models/film');
+const filmSeed = require('../models/filmSeed')
 
 
 
-router.get("/films", async (req, res) => {
+router.get("/", async (req, res) => {
+  console.log('hello')
     try {
-      // send all people
       res.json(await Film.find({}));
     } catch (error) {
-      //send error
       res.status(400).json(error);
     }
   });
 
-  router.delete("/films/:id", async (req, res) => {
+  router.delete("/:id", async (req, res) => {
     try {
-      // send all people
       res.json(await Film.findByIdAndDelete(req.params.id));
     } catch (error) {
-      //send error
       res.status(400).json(error);
     }
   });
 
-  router.put("/films/:id", async (req, res) => {
+  router.put("/:id", async (req, res) => {
     try {
       res.json(
         await Film.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -34,15 +32,8 @@ router.get("/films", async (req, res) => {
     }
   });
 
-router.get("/films", async (req, res) => {
-    try {
-      res.json(await People.find({}));
-    } catch (error) {
-      res.status(400).json(error);
-    }
-  });
 
-  router.post("/films", async (req, res) => {
+  router.post("/", async (req, res) => {
     try {
       res.json(await Film.create(req.body));
     } catch (error) {
