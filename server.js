@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 const indexController = require('./controllers/index');
 const usersController = require('./controllers/users');
 const filmsController = require('./controllers/films')
+const contactsController = require('./controllers/contacts')
 
 
 const app = express()
@@ -41,11 +42,15 @@ app.use(
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////
-// create a test route
-// app.get("/", (req, res) => {
-//   res.send("hello world");
-// });
+app.get('/api', (req, res) => {
+  res.json({message: 'Welcome to the Golden Silence'})
+});
 
+app.get('/api/*', (req, res) => {
+  res.status(404).json({message: 'That route was not found'})
+});
+
+app.use('/api/contacts', contactsController);
 app.use('/index', indexController);
 app.use('/users', usersController);
 app.use('/films', filmsController);
