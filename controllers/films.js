@@ -49,6 +49,7 @@ router.get("/", async (req, res) => {
   router.post("/", async (req, res) => {
     try {
       res.json(await Film.create(req.body));
+      console.log(req.body)
     } catch (error) {
       res.status(400).json(error);
     }

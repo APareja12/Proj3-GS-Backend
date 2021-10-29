@@ -4,9 +4,11 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        res.json(await Contact.find({}));
+        console.log(req.user.uid)
+        res.json(await Contact.find({managedBy: req.user.uid}));
     } catch (error) {
-        res.status(401).json({message: 'Please login to see contacts'})
+        console.log(error)
+        // res.status(401).json({message: 'Please login to see contacts'})
     }
 });
 

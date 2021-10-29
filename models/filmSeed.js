@@ -2,7 +2,7 @@ module.exports = [
     {
       title: "The General",
       year: "1926",
-      img: "",
+      image: "https://www.kinolorber.com/media_cache/images/full/train.jpg",
       director:"Buster Keaton",
       country:"USA",
     },
@@ -10,7 +10,7 @@ module.exports = [
     {
       title: "Metropolis",
       year: "1927",
-      img:"",
+      image:"https://m.media-amazon.com/images/I/51xSTnAL2BL._AC_.jpg",
       director:"Fritz Lang",
       country:"Germany",
     },
@@ -18,7 +18,7 @@ module.exports = [
     {
       title: "Sunrise",
       year: "1927",
-      img:"",
+      image:"https://cdn.shopify.com/s/files/1/0747/3829/products/HP2912_1bc614b5-dd65-4877-9086-fd6c9e0b0f58_1024x1024.jpg?v=1571445092",
       director:"F.W. Murnau",
       country:"USA",
     },
@@ -26,7 +26,7 @@ module.exports = [
     {
       title: "Nosferatu",
       year: "1922",
-      img:"",
+      image:"https://m.media-amazon.com/images/M/MV5BMTAxYjEyMTctZTg3Ni00MGZmLWIxMmMtOGM2NTFiY2U3MmExXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
       director:"F.W. Murnau",
       country:"Germany",
     },
@@ -34,7 +34,7 @@ module.exports = [
     {
       title: "The Gold Rush",
       year: "1925",
-      img:"",
+      image:"https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/the-gold-rush-movie-poster-chaplin-1925-stars-on-art.jpg",
       director:"Charles Chaplin",
       country:"USA",
     },
@@ -42,15 +42,15 @@ module.exports = [
     {
       title: "The Wind",
       year:"1928",
-        img:"",
-        director:"King Vidor",
-        country:"USA",
+      image:"https://m.media-amazon.com/images/M/MV5BMTI3YjJmMjMtN2I3Mi00YWUwLThmNTctN2NjNjgwNmFlNGRiXkEyXkFqcGdeQXVyNjE5MjUyOTM@._V1_.jpg",
+      director:"King Vidor",
+      country:"USA",
     },
 
     {
       title: "Greed",
       year: "1924",
-      img:"",
+      image:"https://dyn1.heritagestatic.com/lf?set=path%5B1%2F0%2F4%2F6%2F8%2F10468916%5D&call=url%5Bfile%3Aproduct.chain%5D",
       director:"Erich von Stroheim",
       country:"USA",
     },

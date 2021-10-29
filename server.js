@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cors = require('cors');
 const session = require("express-session")
-const methodOverride = require('method-override')
+const admin = require('firebase-admin')
+const serviceAccount = require('./golden-silence-75a09-firebase-adminsdk-t32m3-9a70623378.json')
 const indexController = require('./controllers/index');
 const usersController = require('./controllers/users');
 const filmsController = require('./controllers/films')
@@ -29,7 +30,6 @@ db.on('error', (error) => {
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.json());
-app.use(methodOverride())
 app.use(cors());
 app.use(
     session({
@@ -39,6 +39,22 @@ app.use(
     })
   )
 
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+  
+app.use( async function(req, res, next) {
+    const token = req.get('Authorization');
+    if (token) {const authUser = await admin.auth().verifyIdToken(token.replace('Bearer ', ''))
+    req.user = authUser }
+     next();
+  })
+
+function isAuthenticated(req, res, next) {
+  if(req.user) return next();
+  else res.status(401).json({message: 'unauthorized'})
+} 
+  
 ///////////////////////////////
 // ROUTES
 ////////////////////////////////
@@ -46,15 +62,15 @@ app.get('/api', (req, res) => {
   res.json({message: 'Welcome to the Golden Silence'})
 });
 
-app.get('/api/*', (req, res) => {
-  res.status(404).json({message: 'That route was not found'})
-});
 
-app.use('/api/contacts', contactsController);
+app.use('/api/contacts', isAuthenticated, contactsController);
 app.use('/index', indexController);
 app.use('/users', usersController);
 app.use('/films', filmsController);
 
+app.get('/api/*', (req, res) => {
+  res.status(404).json({message: 'That route was not found'})
+});
 app.listen(PORT, () => {
     console.log(`Sweet dreams are made of these:${PORT}`)
 });
