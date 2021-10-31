@@ -6,6 +6,7 @@ const filmSchema = new Schema({
 	year: String,
     director: String,
     country: String,
+    image: String,
 }, {timestamps: true });
 
 const Film = mongoose.model('Film', filmSchema);
