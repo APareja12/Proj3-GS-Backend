@@ -34,7 +34,7 @@ module.exports = [
     {
       title: "The Gold Rush",
       year: "1925",
-      image:"https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/the-gold-rush-movie-poster-chaplin-1925-stars-on-art.jpg",
+      image:"https://upload.wikimedia.org/wikipedia/commons/4/4d/Gold_rush_poster.jpg",
       director:"Charles Chaplin",
       country:"USA",
     },
